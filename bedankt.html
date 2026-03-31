@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bedankt! | Lekkagehulp24.nl</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628; --navy-mid: #112240; --accent: #f97316; --accent-dark: #ea6c0a;
+      --accent-glow: rgba(249,115,22,0.18); --white: #ffffff;
+      --text-muted: #8a9ab5; --border: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.04); --success: #22c55e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+
+    .hero-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 50% at 60% 0%, rgba(249,115,22,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 10% 100%, rgba(34,197,94,0.06) 0%, transparent 50%),
+        linear-gradient(160deg, #0a1628 0%, #0d1e3a 50%, #0a1628 100%);
+    }
+    .hero-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 30%, transparent 100%);
+    }
+
+    nav { position: relative; z-index: 10; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    nav .inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--white); text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    .nav-home { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-home:hover { color: var(--white); }
+
+    /* Main */
+    .main { position: relative; z-index: 1; flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+    .card-wrap { width: 100%; max-width: 560px; }
+
+    /* Step 1: Bedankt */
+    #step-bedankt { animation: fadeUp 0.6s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .check-circle {
+      width: 72px; height: 72px;
+      background: rgba(34,197,94,0.12);
+      border: 2px solid rgba(34,197,94,0.35);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 28px;
+      animation: popIn 0.5s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+
+    .bedankt-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; text-align: center; letter-spacing: -1px; margin-bottom: 14px; }
+    .bedankt-title em { font-style: normal; color: var(--success); }
+    .bedankt-sub { font-size: 0.97rem; line-height: 1.75; color: var(--text-muted); text-align: center; margin-bottom: 36px; }
+
+    /* Divider */
+    .soft-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); margin: 0 0 32px; }
+
+    /* Source question */
+    .question-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); text-align: center; margin-bottom: 10px; }
+    .question-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: 24px; }
+
+    .source-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    @media (max-width: 480px) { .source-options { grid-template-columns: 1fr; } }
+
+    .source-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .source-btn:hover { border-color: rgba(249,115,22,0.4); background: var(--accent-glow); transform: translateY(-1px); }
+    .source-btn.selected { border-color: var(--accent); background: var(--accent-glow); color: var(--accent); font-weight: 600; }
+
+    /* Anders text field */
+    .anders-wrap { margin-bottom: 16px; overflow: hidden; max-height: 0; transition: max-height 0.35s ease, opacity 0.3s; opacity: 0; }
+    .anders-wrap.visible { max-height: 100px; opacity: 1; }
+    .anders-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .anders-input:focus { border-color: var(--accent); background: rgba(249,115,22,0.06); }
+    .anders-input::placeholder { color: rgba(255,255,255,0.25); }
+
+    .btn-send {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 15px 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 8px 30px rgba(249,115,22,0.3);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .btn-send.active { opacity: 1; pointer-events: auto; }
+    .btn-send.active:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(249,115,22,0.45); }
+
+    .skip-link { display: block; text-align: center; margin-top: 14px; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .skip-link:hover { color: var(--white); }
+
+    /* Step 2: Done */
+    #step-done { display: none; animation: fadeUp 0.5s ease both; }
+    .done-icon { font-size: 2.5rem; text-align: center; margin-bottom: 16px; }
+    .done-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; text-align: center; margin-bottom: 12px; }
+    .done-text { font-size: 0.92rem; color: var(--text-muted); text-align: center; line-height: 1.7; margin-bottom: 28px; }
+    .btn-home { display: block; text-align: center; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 24px; color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: border-color 0.2s, background 0.2s; }
+    .btn-home:hover { border-color: rgba(249,115,22,0.4); background: var(--accent-glow); }
+
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 28px 0; }
+    footer .inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; }
+    .footer-logo span { color: var(--accent); }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo">Lekkagehulp<span>24</span>.nl</a>
+    <a href="/" class="nav-home">← Terug naar home</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="card-wrap">
+
+    <!-- STEP 1: Bedankt + bronvraag -->
+    <div id="step-bedankt">
+      <div class="check-circle">✓</div>
+      <h1 class="bedankt-title">Bedankt! We nemen zo<br><em>spoedig mogelijk</em> contact op.</h1>
+      <p class="bedankt-sub">Je melding is ontvangen. Een vakman in jouw regio neemt zo snel mogelijk contact met je op.</p>
+
+      <div class="soft-divider"></div>
+
+      <div class="question-label">✨ Nog één vraagje</div>
+      <div class="question-title">Hoe heb je ons gevonden?</div>
+
+      <div class="source-options">
+        <button class="source-btn" onclick="selectSource(this, 'Google')">🔍 Google</button>
+        <button class="source-btn" onclick="selectSource(this, 'Facebook')">📘 Facebook</button>
+        <button class="source-btn" onclick="selectSource(this, 'Reclame in de brievenbus')">📬 Reclame in de brievenbus</button>
+        <button class="source-btn" onclick="selectSource(this, 'Advertentie')">📢 Advertentie</button>
+      </div>
+
+      <!-- Anders knop apart, volledige breedte -->
+      <div style="margin-bottom:16px;">
+        <button class="source-btn" style="width:100%;" onclick="selectSource(this, 'Anders')">💬 Anders, nl.</button>
+      </div>
+
+      <div class="anders-wrap" id="anders-wrap">
+        <input type="text" class="anders-input" id="anders-input" placeholder="Vertel ons hoe je ons gevonden hebt..." oninput="onAndersInput()" />
+      </div>
+
+      <button class="btn-send" id="btn-send" onclick="verstuurBron()">Verstuur antwoord</button>
+      <span class="skip-link" onclick="showDone()">Overslaan</span>
+    </div>
+
+    <!-- STEP 2: Klaar -->
+    <div id="step-done">
+      <div class="done-icon">🎉</div>
+      <div class="done-title">Dankjewel!</div>
+      <p class="done-text">Je antwoord is ontvangen. We hopen je snel te helpen met je lekkage!<br>Heb je nog vragen? We staan voor je klaar.</p>
+      <a href="/" class="btn-home">← Terug naar home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <div class="footer-logo">Lekkagehulp<span>24</span>.nl</div>
+    <div class="footer-meta">Een initiatief van Bouwcollectief West-Friesland</div>
+  </div>
+</footer>
+
+<script>
+  let selectedSource = null;
+
+  function selectSource(btn, value) {
+    // Deselect all
+    document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedSource = value;
+
+    // Toggle Anders veld
+    const andersWrap = document.getElementById('anders-wrap');
+    const andersInput = document.getElementById('anders-input');
+    if (value === 'Anders') {
+      andersWrap.classList.add('visible');
+      andersInput.focus();
+      // Knop alleen actief als tekstveld ook gevuld is
+      updateSendBtn();
+    } else {
+      andersWrap.classList.remove('visible');
+      andersInput.value = '';
+      document.getElementById('btn-send').classList.add('active');
+    }
+  }
+
+  function onAndersInput() {
+    updateSendBtn();
+  }
+
+  function updateSendBtn() {
+    const andersVal = document.getElementById('anders-input').value.trim();
+    const btn = document.getElementById('btn-send');
+    if (selectedSource === 'Anders') {
+      btn.classList.toggle('active', andersVal.length > 0);
+    } else if (selectedSource) {
+      btn.classList.add('active');
+    }
+  }
+
+  async function verstuurBron() {
+    let bronWaarde = selectedSource;
+    if (selectedSource === 'Anders') {
+      const andersVal = document.getElementById('anders-input').value.trim();
+      if (!andersVal) return;
+      bronWaarde = 'Anders: ' + andersVal;
+    }
+
+    // Stuur tweede Formspree bericht met alleen de broninfo
+    // Vervang FORMSPREE_ID met jouw Formspree endpoint zodra je die hebt
+    const FORMSPREE_ID = 'xaqljvyz';
+
+    try {
+      await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: '📊 Hoe gevonden: ' + bronWaarde,
+          bron: bronWaarde,
+          opmerking: 'Dit is een follow-up van de bedanktpagina.'
+        })
+      });
+    } catch(e) {
+      // Stille fout — toon altijd step-done
+    }
+
+    showDone();
+  }
+
+  function showDone() {
+    document.getElementById('step-bedankt').style.display = 'none';
+    document.getElementById('step-done').style.display = 'block';
+  }
+</script>
+</body>
+</html>

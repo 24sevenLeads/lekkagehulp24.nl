@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waterlekkage oplossen in West-Friesland | Lekkagehulp24.nl</title>
+  <meta name="description" content="Waterlekkage in Hoorn, Enkhuizen of omgeving West-Friesland? Onze loodgieters lossen leidingbreuken, lekkende kranen en vochtproblemen snel op. Vrijblijvend contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628; --navy-mid: #112240; --accent: #f97316; --accent-dark: #ea6c0a;
+      --accent-glow: rgba(249,115,22,0.18); --white: #ffffff; --off-white: #f8f7f4;
+      --text-muted: #8a9ab5; --border: rgba(255,255,255,0.08); --card-bg: rgba(255,255,255,0.04); --success: #22c55e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; min-height: 100vh; }
+    .hero-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 60% at 30% 10%, rgba(249,115,22,0.10) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 90% 90%, rgba(249,115,22,0.06) 0%, transparent 50%), linear-gradient(160deg, #0a1628 0%, #0d1e3a 50%, #0a1628 100%); }
+    .hero-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 30%, transparent 100%); }
+    .container { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    nav { position: relative; z-index: 10; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--white); text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    .nav-back { display: flex; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-back:hover { color: var(--white); }
+    .hero { padding: 70px 0 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    @media (max-width: 768px) { .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 0; } }
+    .hero-left { animation: fadeUp 0.7s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-glow); border: 1px solid rgba(249,115,22,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.78rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; }
+    .hero-tag::before { content: '🚿'; font-size: 0.85rem; }
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 28px; max-width: 420px; }
+    .info-blocks { display: flex; flex-direction: column; gap: 14px; }
+    .info-block { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .info-block-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .info-block-title { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+    .info-block-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
+    .form-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 36px 32px; backdrop-filter: blur(20px); animation: fadeUp 0.7s 0.1s ease both; box-shadow: 0 32px 80px rgba(0,0,0,0.4); }
+    @media (max-width: 768px) { .form-card { padding: 28px 22px; } }
+    .form-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
+    .form-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; }
+    .form-group { margin-bottom: 14px; }
+    label { display: block; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 7px; }
+    input[type="text"], input[type="tel"], textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 13px 16px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s, background 0.2s; }
+    input[type="text"]:focus, input[type="tel"]:focus, textarea:focus { border-color: var(--accent); background: rgba(249,115,22,0.06); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+    textarea { resize: none; height: 80px; }
+    .file-upload { width: 100%; background: rgba(255,255,255,0.04); border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 10px; padding: 18px 16px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
+    .file-upload:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .file-upload input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .file-upload-icon { font-size: 1.5rem; margin-bottom: 6px; }
+    .file-upload-text { font-size: 0.82rem; color: var(--text-muted); }
+    .file-upload-text strong { color: var(--accent); }
+    .btn-primary { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 12px; padding: 16px 24px; font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; margin-top: 6px; box-shadow: 0 8px 30px rgba(249,115,22,0.35); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(249,115,22,0.45); }
+    .form-disclaimer { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 12px; }
+    .success-state { display: none; text-align: center; padding: 20px 0; }
+    .success-icon { width: 64px; height: 64px; background: rgba(34,197,94,0.15); border: 2px solid rgba(34,197,94,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 16px; }
+    .success-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--success); }
+    .success-text { font-size: 0.9rem; color: var(--text-muted); }
+    .section-divider { position: relative; z-index: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); }
+    .faq-section { position: relative; z-index: 1; padding: 70px 0; }
+    .faq-section .container { max-width: 720px; }
+    .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 12px; }
+    h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.8px; margin-bottom: 32px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+    .faq-q { width: 100%; background: var(--card-bg); border: none; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 18px 20px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.2s; }
+    .faq-q:hover { background: rgba(255,255,255,0.07); }
+    .faq-q .arrow { font-size: 0.8rem; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; background: rgba(255,255,255,0.02); padding: 0 20px; }
+    .faq-a.open { max-height: 200px; padding: 16px 20px; }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 32px 0; }
+    footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; }
+    .footer-logo span { color: var(--accent); }
+    .footer-meta { font-size: 0.78rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--white); }
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; padding: 12px 20px; background: var(--navy-mid); border-top: 1px solid var(--border); backdrop-filter: blur(20px); }
+    @media (max-width: 768px) { .sticky-cta { display: block; } }
+    .sticky-btn { width: 100%; background: var(--accent); color: var(--white); border: none; border-radius: 12px; padding: 15px 24px; font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 8px 30px rgba(249,115,22,0.4); }
+  </style>
+</head>
+<body>
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+
+<nav>
+  <div class="container">
+    <a href="/" class="logo">Lekkagehulp<span>24</span>.nl</a>
+    <a href="/" class="nav-back">← Terug naar home</a>
+  </div>
+</nav>
+
+<section style="position:relative;z-index:1;">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-tag">Waterlekkage</div>
+        <h1>Last van een <em>waterlekkage</em>?</h1>
+        <p class="hero-sub">Water op de vloer, een natte muur of een druipend plafond — een waterlekkage kan snel grote schade veroorzaken. Onze loodgieters in West-Friesland reageren snel.</p>
+        <div class="info-blocks">
+          <div class="info-block">
+            <div class="info-block-icon">🔧</div>
+            <div>
+              <div class="info-block-title">Leidingbreuk & lekkende kranen</div>
+              <div class="info-block-text">Van een druppelende kraan tot een gesprongen leiding — we lossen het vakkundig op.</div>
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-block-icon">💧</div>
+            <div>
+              <div class="info-block-title">Water uit plafond of vloer</div>
+              <div class="info-block-text">Water dat door het plafond of de vloer komt wijst vaak op een lekkage in een bovenliggende ruimte of badkamer.</div>
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-block-icon">🏠</div>
+            <div>
+              <div class="info-block-title">Badkamer & toilet</div>
+              <div class="info-block-text">Lekkende douche, afvoer of toilet? Onze vakmensen detecteren de oorzaak en repareren direct.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-card">
+          <div id="form-wrapper">
+            <div class="form-title">Meld je waterlekkage</div>
+            <div class="form-sub">Een loodgieter neemt zo snel mogelijk contact op.</div>
+            <form id="lead-form" novalidate>
+              <div class="form-group">
+                <label for="naam">Voornaam</label>
+                <input type="text" id="naam" name="naam" placeholder="bijv. Jan" required />
+              </div>
+              <div class="form-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" id="achternaam" name="achternaam" placeholder="bijv. de Vries" required />
+              </div>
+              <div class="form-group">
+                <label for="postcode">Postcode</label>
+                <input type="text" id="postcode" name="postcode" placeholder="bijv. 1620 AB" maxlength="7" required />
+              </div>
+              <div class="form-group">
+                <label for="huisnummer">Huisnummer</label>
+                <input type="text" id="huisnummer" name="huisnummer" placeholder="bijv. 12 A" />
+              </div>
+              <div class="form-group">
+                <label for="telefoon">Telefoonnummer</label>
+                <input type="tel" id="telefoon" name="telefoon" placeholder="bijv. 06 12 34 56 78" required />
+              </div>
+              <div class="form-group">
+                <label for="omschrijving">Omschrijving waterlekkage</label>
+                <textarea id="omschrijving" name="omschrijving" placeholder="Bijv. water komt uit het plafond van de badkamer..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Foto's toevoegen (max. 3)</label>
+                <div class="file-upload">
+                  <input type="file" id="fotos" name="fotos" accept="image/*" multiple />
+                  <div class="file-upload-icon">📷</div>
+                  <div class="file-upload-text"><strong>Klik om foto's te uploaden</strong><br>of sleep ze hier naartoe</div>
+                  <div id="file-names"></div>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary">🚿 Meld mijn waterlekkage</button>
+              <p class="form-disclaimer">100% vrijblijvend · Geen verplichtingen</p>
+            </form>
+          </div>
+          <div class="success-state" id="success-state">
+            <div class="success-icon">✓</div>
+            <div class="success-title">Aanvraag ontvangen!</div>
+            <p class="success-text">Een loodgieter neemt zo snel mogelijk contact met je op.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-label">❓ Veelgestelde vragen</div>
+    <h2>Alles over waterlekkages</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Wat moet ik doen als ik een waterlekkage ontdek? <span class="arrow">▼</span></button>
+      <div class="faq-a">Sluit bij twijfel de hoofdkraan af om verdere schade te beperken. Zet emmers neer als er water druppelt en maak zo mogelijk een foto van de situatie. Meld het daarna direct via ons formulier — wij regelen de rest.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Water uit mijn plafond — wat nu? <span class="arrow">▼</span></button>
+      <div class="faq-a">Water uit het plafond komt meestal van een lekkage in de badkamer, toilet of leiding op de verdieping erboven. Schakel de watertoevoer af en neem snel contact op — dit soort lekkages kan snel meer schade veroorzaken.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Vergoeding via verzekering? <span class="arrow">▼</span></button>
+      <div class="faq-a">Veel waterlekkages vallen onder de inboedel- of opstalverzekering. Maak altijd foto's als bewijs en vraag bij je verzekeraar na wat vergoed wordt. Onze vakman kan je indien gewenst een schade-rapport opstellen.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is het contact vrijblijvend? <span class="arrow">▼</span></button>
+      <div class="faq-a">Ja, volledig vrijblijvend. De loodgieter beoordeelt de situatie en geeft je een eerlijke prijsopgave. Jij beslist of je verder gaat — geen verplichtingen.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">Lekkagehulp<span>24</span>.nl</div>
+    <div class="footer-meta">Een initiatief van Bouwcollectief West-Friesland</div>
+    <div class="footer-links"><a href="#">Privacy</a><a href="#">Contact</a></div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <button class="sticky-btn" onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">🚿 Meld je waterlekkage</button>
+</div>
+
+<script>
+  document.getElementById('fotos').addEventListener('change', function() {
+    const files = Array.from(this.files).slice(0,3);
+    document.getElementById('file-names').textContent = files.length ? `✓ ${files.length} foto${files.length>1?"'s":""} geselecteerd` : '';
+  });
+  // Form submit
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const postcode = document.getElementById('postcode').value.trim();
+    const telefoon = document.getElementById('telefoon').value.trim();
+    if (!postcode || !telefoon) {
+      alert('Vul je postcode en telefoonnummer in.');
+      return;
+    }
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Bezig met verzenden...';
+    btn.disabled = true;
+    const data = new FormData(this);
+    data.append('_subject', '🚿 Nieuwe lekkagemelding via Waterlekkage');
+    data.append('pagina', 'Waterlekkage');
+    try {
+      const res = await fetch('https://formspree.io/f/xaqljvyz', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) { window.location.href = '/bedankt'; }
+      else { btn.textContent = 'Probeer opnieuw'; btn.disabled = false; alert('Er ging iets mis. Probeer het opnieuw.'); }
+    } catch(err) { btn.textContent = 'Probeer opnieuw'; btn.disabled = false; alert('Er ging iets mis. Controleer je internetverbinding.'); }
+  });
+  document.getElementById('postcode').addEventListener('input', function() {
+    let val = this.value.replace(/\s/g,'').toUpperCase();
+    if (val.length > 4) val = val.slice(0,4)+' '+val.slice(4,6);
+    this.value = val;
+  });
+  function toggleFaq(btn) {
+    btn.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

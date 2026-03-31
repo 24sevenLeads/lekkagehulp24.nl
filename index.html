@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lekkage? Direct hulp! | Lekkagehulp24.nl</title>
+  <meta name="description" content="Lekkage in Hoorn, Enkhuizen of omgeving West-Friesland? Onze vakmensen staan 24/7 klaar. Meld je lekkage nu en ontvang snel hulp van een lokale vakman." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --accent: #f97316;
+      --accent-dark: #ea6c0a;
+      --accent-glow: rgba(249,115,22,0.18);
+      --white: #ffffff;
+      --off-white: #f8f7f4;
+      --text-muted: #8a9ab5;
+      --border: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.04);
+      --success: #22c55e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── HERO BACKGROUND ── */
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 10%, rgba(249,115,22,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 10% 90%, rgba(249,115,22,0.06) 0%, transparent 50%),
+        linear-gradient(160deg, #0a1628 0%, #0d1e3a 50%, #0a1628 100%);
+    }
+    .hero-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 30%, transparent 100%);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: relative;
+      z-index: 10;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--success);
+    }
+    .nav-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse-green 1.8s infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 70px 0 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 40px; }
+    }
+
+    .hero-left { animation: fadeUp 0.7s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+    .hero-tag::before {
+      content: '⚡';
+      font-size: 0.85rem;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 0;
+    }
+    .trust-chip {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      animation: fadeUp 0.7s ease both;
+    }
+    .trust-chip:nth-child(1) { animation-delay: 0.15s; }
+    .trust-chip:nth-child(2) { animation-delay: 0.25s; }
+    .trust-chip:nth-child(3) { animation-delay: 0.35s; }
+    .trust-chip:nth-child(4) { animation-delay: 0.45s; }
+    .trust-chip .check {
+      color: var(--success);
+      font-size: 0.9rem;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 36px 32px;
+      backdrop-filter: blur(20px);
+      animation: fadeUp 0.7s 0.1s ease both;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    @media (max-width: 768px) {
+      .form-card { padding: 28px 22px; }
+    }
+
+    .form-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+    .form-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 7px;
+    }
+    input[type="text"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      background: rgba(249,115,22,0.06);
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+    textarea { resize: none; height: 80px; }
+
+    /* File upload */
+    .file-upload {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px dashed rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .file-upload:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+    .file-upload input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .file-upload-icon { font-size: 1.5rem; margin-bottom: 6px; }
+    .file-upload-text { font-size: 0.82rem; color: var(--text-muted); }
+    .file-upload-text strong { color: var(--accent); }
+    #file-names { font-size: 0.78rem; color: var(--success); margin-top: 6px; }
+
+    .btn-primary {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: -0.3px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 6px;
+      box-shadow: 0 8px 30px rgba(249,115,22,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(249,115,22,0.45);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .form-disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(34,197,94,0.15);
+      border: 2px solid rgba(34,197,94,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 16px;
+    }
+    .success-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--success);
+    }
+    .success-text { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      position: relative;
+      z-index: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      margin: 0;
+    }
+
+    /* ── SEO / REGIO BLOK ── */
+    .seo-section {
+      position: relative;
+      z-index: 1;
+      padding: 70px 0;
+    }
+    .seo-section .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .seo-section .container { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+    }
+    .seo-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      display: block;
+    }
+    .service-card:hover {
+      border-color: rgba(249,115,22,0.4);
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .service-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .service-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .service-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── REGIOS ── */
+    .regio-section {
+      position: relative;
+      z-index: 1;
+      padding: 0 0 70px;
+    }
+    .regio-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .regio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .regio-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .regio-pill:hover {
+      border-color: rgba(249,115,22,0.4);
+      background: var(--accent-glow);
+      color: var(--accent);
+    }
+    .regio-pill .pin { font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── STICKY CTA MOBILE ── */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 12px 20px;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+    }
+    @media (max-width: 768px) {
+      .sticky-cta { display: block; }
+    }
+    .sticky-btn {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 15px 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(249,115,22,0.4);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-wrap {
+      margin-top: 28px;
+      position: relative;
+      min-height: 160px;
+      cursor: pointer;
+    }
+    .testimonial {
+      position: absolute;
+      inset: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .testimonial.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+    .testimonial-stars {
+      color: #f59e0b;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+    .testimonial-text {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.82);
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .testimonial-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .testimonial-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .testimonial-location {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .testimonial-dots {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+      position: relative;
+      z-index: 2;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="/" class="logo">Lekkagehulp<span>24</span>.nl</a>
+    <div class="nav-badge">Nu beschikbaar</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative;z-index:1;">
+  <div class="container">
+    <div class="hero">
+
+      <!-- LEFT: COPY -->
+      <div class="hero-left">
+        <div class="hero-tag">Spoedservice West-Friesland</div>
+        <h1>Direct hulp bij <em>lekkage</em> nodig?</h1>
+        <p class="hero-sub">Zo snel mogelijk contact met een vakman in jouw regio. Lokale specialisten voor daklekkages, waterlekkages en spoedproblemen.</p>
+        <div class="trust-row">
+          <div class="trust-chip"><span class="check">✔</span> Snel ter plaatse</div>
+          <div class="trust-chip"><span class="check">✔</span> Vrijblijvend contact</div>
+          <div class="trust-chip"><span class="check">✔</span> Lokale vakmensen</div>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="testimonial-wrap" id="testimonial-wrap">
+          <div class="testimonial active" data-index="0">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"We hadden een lekkage bij het dak van de garage. Jordy was snel ter plaatse en heeft het naar volle tevredenheid opgelost!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">E</div>
+              <div>
+                <div class="testimonial-name">Eva</div>
+                <div class="testimonial-location">📍 Hoorn</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial" data-index="1">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Er kwam water uit het plafond van de bijkeuken. Theo heeft de oorzaak gevonden en de lekkage opgelost. We zijn erg blij dat ons probleem zo snel opgelost kon worden!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">B</div>
+              <div>
+                <div class="testimonial-name">Ben</div>
+                <div class="testimonial-location">📍 Blokker</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-dots">
+            <button class="dot active" onclick="goToTestimonial(0)" aria-label="Testimonial 1"></button>
+            <button class="dot" onclick="goToTestimonial(1)" aria-label="Testimonial 2"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div>
+        <div class="form-card">
+          <div id="form-wrapper">
+            <div class="form-title">Meld je lekkage</div>
+            <div class="form-sub">Wij zorgen dat een vakman zo snel mogelijk contact opneemt.</div>
+
+            <form id="lead-form" novalidate>
+              <div class="form-group">
+                <label for="naam">Voornaam</label>
+                <input type="text" id="naam" name="naam" placeholder="bijv. Jan" required />
+              </div>
+              <div class="form-group">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" id="achternaam" name="achternaam" placeholder="bijv. de Vries" required />
+              </div>
+              <div class="form-group">
+                <label for="postcode">Postcode</label>
+                <input type="text" id="postcode" name="postcode" placeholder="bijv. 1620 AB" maxlength="7" required />
+              </div>
+              <div class="form-group">
+                <label for="huisnummer">Huisnummer</label>
+                <input type="text" id="huisnummer" name="huisnummer" placeholder="bijv. 12 A" />
+              </div>
+              <div class="form-group">
+                <label for="telefoon">Telefoonnummer</label>
+                <input type="tel" id="telefoon" name="telefoon" placeholder="bijv. 06 12 34 56 78" required />
+              </div>
+              <div class="form-group">
+                <label for="omschrijving">Korte omschrijving</label>
+                <textarea id="omschrijving" name="omschrijving" placeholder="Beschrijf kort de lekkage..."></textarea>
+              </div>
+              <div class="form-group">
+                <label>Foto's toevoegen (max. 3)</label>
+                <div class="file-upload">
+                  <input type="file" id="fotos" name="fotos" accept="image/*" multiple />
+                  <div class="file-upload-icon">📷</div>
+                  <div class="file-upload-text"><strong>Klik om foto's te uploaden</strong><br>of sleep ze hier naartoe</div>
+                  <div id="file-names"></div>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary">🚨 Ontvang direct hulp</button>
+              <p class="form-disclaimer">100% vrijblijvend · Geen verplichtingen</p>
+            </form>
+          </div>
+
+          <div class="success-state" id="success-state">
+            <div class="success-icon">✓</div>
+            <div class="success-title">Aanvraag ontvangen!</div>
+            <p class="success-text">Een vakman neemt zo snel mogelijk contact met je op. Gemiddeld binnen 30 minuten.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SEO + SERVICES -->
+<section class="seo-section">
+  <div class="container">
+    <div>
+      <div class="section-label">📍 Jouw regio</div>
+      <h2>Lekkage in jouw regio?</h2>
+      <p class="seo-text">Heb je een lekkage in Hoorn, Enkhuizen of omgeving West-Friesland? Onze aangesloten vakmensen staan klaar om snel te helpen bij daklekkages, waterlekkages en spoedproblemen.<br><br>Lekkagehulp24.nl is een initiatief van Bouwcollectief West-Friesland — een verzameling vakkundige loodgieters en dakdekkers uit de regio.</p>
+    </div>
+    <div>
+      <div class="section-label">🔧 Onze diensten</div>
+      <div class="services-grid">
+        <a href="/daklekkage" class="service-card">
+          <div class="service-icon">🏠</div>
+          <div class="service-name">Daklekkage</div>
+          <div class="service-desc">Snel diagnose en reparatie van dakproblemen</div>
+        </a>
+        <a href="/waterlekkage" class="service-card">
+          <div class="service-icon">🚿</div>
+          <div class="service-name">Waterlekkage</div>
+          <div class="service-desc">Leidingbreuk, lekkende kraan of vloer</div>
+        </a>
+        <a href="/spoed-lekkage" class="service-card">
+          <div class="service-icon">🚨</div>
+          <div class="service-name">Spoed</div>
+          <div class="service-desc">Spoedservice bij acute lekkages</div>
+        </a>
+        <a href="#lead-form" class="service-card">
+          <div class="service-icon">📋</div>
+          <div class="service-name">Direct melden</div>
+          <div class="service-desc">Stuur je aanvraag nu in en wij regelen de rest</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- REGIOS -->
+<section class="regio-section" style="padding-top:70px;">
+  <div class="container">
+    <div class="regio-header">
+      <div class="section-label">📍 Wij zijn actief in</div>
+      <h2>Altijd een vakman in de buurt</h2>
+    </div>
+    <div class="regio-grid">
+      <a href="/lekkage-hoorn" class="regio-pill"><span class="pin">📍</span> Hoorn</a>
+      <a href="/lekkage-enkhuizen" class="regio-pill"><span class="pin">📍</span> Enkhuizen</a>
+      <a href="/lekkage-medemblik" class="regio-pill"><span class="pin">📍</span> Medemblik</a>
+      <a href="#" class="regio-pill"><span class="pin">📍</span> Stede Broec</a>
+      <a href="#" class="regio-pill"><span class="pin">📍</span> Drechterland</a>
+      <a href="#" class="regio-pill"><span class="pin">📍</span> Opmeer</a>
+      <a href="#" class="regio-pill"><span class="pin">📍</span> Koggenland</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Lekkagehulp<span>24</span>.nl</div>
+    <div class="footer-meta">Een initiatief van Bouwcollectief West-Friesland</div>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <button class="sticky-btn" onclick="document.getElementById('postcode').scrollIntoView({behavior:'smooth'})">
+    🚨 Meld je lekkage nu
+  </button>
+</div>
+
+<script>
+  // File upload feedback
+  const fileInput = document.getElementById('fotos');
+  const fileNames = document.getElementById('file-names');
+  fileInput.addEventListener('change', () => {
+    const files = Array.from(fileInput.files).slice(0, 3);
+    if (files.length > 0) {
+      fileNames.textContent = `✓ ${files.length} foto${files.length > 1 ? "'s" : ""} geselecteerd`;
+      if (fileInput.files.length > 3) {
+        const dt = new DataTransfer();
+        files.forEach(f => dt.items.add(f));
+        fileInput.files = dt.files;
+      }
+    } else {
+      fileNames.textContent = '';
+    }
+  });
+
+  // Form submit
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const postcode = document.getElementById('postcode').value.trim();
+    const telefoon = document.getElementById('telefoon').value.trim();
+    if (!postcode || !telefoon) {
+      alert('Vul je postcode en telefoonnummer in.');
+      return;
+    }
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Bezig met verzenden...';
+    btn.disabled = true;
+    const data = new FormData(this);
+    data.append('_subject', '🏠 Nieuwe lekkagemelding via Homepage');
+    data.append('pagina', 'Homepage');
+    try {
+      const res = await fetch('https://formspree.io/f/xaqljvyz', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) { window.location.href = '/bedankt'; }
+      else { btn.textContent = 'Probeer opnieuw'; btn.disabled = false; alert('Er ging iets mis. Probeer het opnieuw.'); }
+    } catch(err) { btn.textContent = 'Probeer opnieuw'; btn.disabled = false; alert('Er ging iets mis. Controleer je internetverbinding.'); }
+  });
+
+  // Postcode formatting
+  document.getElementById('postcode').addEventListener('input', function() {
+    let val = this.value.replace(/\s/g, '').toUpperCase();
+    if (val.length > 4) val = val.slice(0,4) + ' ' + val.slice(4,6);
+    this.value = val;
+  });
+
+  // Testimonial rotator
+  let currentTestimonial = 0;
+  const testimonials = document.querySelectorAll('.testimonial');
+  const dots = document.querySelectorAll('.dot');
+  let rotatorTimer;
+
+  function goToTestimonial(index) {
+    testimonials[currentTestimonial].classList.remove('active');
+    dots[currentTestimonial].classList.remove('active');
+    currentTestimonial = index;
+    testimonials[currentTestimonial].classList.add('active');
+    dots[currentTestimonial].classList.add('active');
+    resetTimer();
+  }
+
+  function nextTestimonial() {
+    goToTestimonial((currentTestimonial + 1) % testimonials.length);
+  }
+
+  function resetTimer() {
+    clearInterval(rotatorTimer);
+    rotatorTimer = setInterval(nextTestimonial, 10000);
+  }
+
+  // Click anywhere on the testimonial to advance
+  document.getElementById('testimonial-wrap').addEventListener('click', function(e) {
+    if (!e.target.classList.contains('dot')) nextTestimonial();
+  });
+
+  resetTimer();
+</script>
+</body>
+</html>
