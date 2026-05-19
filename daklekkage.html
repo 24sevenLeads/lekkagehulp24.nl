@@ -213,7 +213,7 @@
   <div class="container">
     <div class="footer-logo">Lekkagehulp<span>24</span>.nl</div>
     <div class="footer-meta">Een initiatief van Bouwcollectief West-Friesland</div>
-    <div class="footer-links"><a href="#">Privacy</a><a href="#">Contact</a></div>
+    <div class="footer-links"><a href="/privacy">Privacy</a><a href="/contact">Contact</a></div>
   </div>
 </footer>
 
@@ -238,11 +238,19 @@
     const btn = this.querySelector('button[type="submit"]');
     btn.textContent = 'Bezig met verzenden...';
     btn.disabled = true;
-    const data = new FormData(this);
+    // Formspree gratis plan ondersteunt geen bestandsuploads via fetch
+    // Tekstvelden handmatig meesturen als JSON
+    const formEl = this;
+    const data = new FormData(formEl);
     data.append('_subject', '🏠 Nieuwe lekkagemelding via Daklekkage');
     data.append('pagina', 'Daklekkage');
     try {
-      const res = await fetch('https://formspree.io/f/xaqljvyz', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      // Stuur alleen tekstvelden, geen bestanden
+      const jsonData = {};
+      data.forEach((value, key) => {
+        if (typeof value === 'string') jsonData[key] = value;
+      });
+      const res = await fetch('https://formspree.io/f/xaqljvyz', { method: 'POST', body: JSON.stringify(jsonData), headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } });
       if (res.ok) { window.location.href = '/bedankt'; }
       else { btn.textContent = 'Probeer opnieuw'; btn.disabled = false; alert('Er ging iets mis. Probeer het opnieuw.'); }
     } catch(err) { btn.textContent = 'Probeer opnieuw'; btn.disabled = false; alert('Er ging iets mis. Controleer je internetverbinding.'); }
